@@ -1,0 +1,24 @@
+var pts = ee.FeatureCollection([
+  ee.Feature(ee.Geometry.Point([-75.635917, 9.345278]), {plot_id: 1}),
+  ee.Feature(ee.Geometry.Point([-75.134917, 10.467389]), {plot_id: 2})
+]);
+
+var dataset = ee.ImageCollection('NOAA/CFSV2/FOR6H')
+                  .filter(ee.Filter.date('2021-02-01', '2021-02-02'));
+var temperatureAboveGround = dataset.select('Temperature_height_above_ground');
+
+// Define parameters for the zonalStats function.
+var params = {
+  bands: [0, 1],
+  bandsRename: ['temperature']
+};
+
+var visParams = {
+  min: 220.0,
+  max: 310.0,
+  palette: ['blue', 'purple', 'cyan', 'green', 'yellow', 'red'],
+};
+
+Map.centerObject(pts,9);
+Map.addLayer(temperatureAboveGround, visParams, 'Temperature Above Ground');
+Map.addLayer(pts);

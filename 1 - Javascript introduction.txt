@@ -1,0 +1,29 @@
+print('Hi How are you?');
+
+// Variables
+var city = 'Seattle';
+var country = 'USA';
+print(city, country);
+
+var population = 3000000;
+print(population);
+ 
+// List
+var majorCities = ['Seattle', 'Miami', 'New York', 'Los Angeles'];
+print(majorCities);
+
+// Dictionary
+var cityData = {
+  'city': city,
+  'population': 8400000,
+  'elevation': 930
+};
+print(cityData);
+
+// Functions
+var greet = function(name) {
+    return 'Hi ' + name;
+};
+print(greet('students'));
+
+// Writing comments
